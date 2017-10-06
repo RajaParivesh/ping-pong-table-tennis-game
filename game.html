@@ -6,15 +6,17 @@
 	
 	var canvas;// information about dimensions
 	var canvasContext;// information about shape
-	var ballx=20;
-	var ballSpeedx=10;
+	var ballX=20;
+	var ballY=20;
+	var ballSpeedX=4;
+	var ballSpeedY=2;
 
 	window.onload = function(){
 		console.log('Every thing is Good!!');
 		canvas = document.getElementById('gameCanvas');
 		canvasContext = canvas.getContext('2d');
 
-		var framePerSecond = 30;
+		var framePerSecond = 80;
 		setInterval(function(){
 			drawEverthing();
 			moveEverything();
@@ -22,11 +24,20 @@
 	}
 	
 	function moveEverything(){
-			ballx = ballx + ballSpeedx;
-		if(ballx > canvas.width)
-			ballSpeedx = -ballSpeedx;
-		if(ballx < 0)
-			ballSpeedx = -ballSpeedx;
+		
+		// Horizontal Motion
+		ballX = ballX + ballSpeedX;
+		if(ballX > canvas.width)
+			ballSpeedX = -ballSpeedX;
+		if(ballX < 0)
+			ballSpeedX = -ballSpeedX;
+
+		// Vertical Motion
+		ballY = ballY + ballSpeedY;
+		if(ballY > canvas.height)
+			ballSpeedY = -ballSpeedY;
+		if(ballY < 0)
+			ballSpeedY = -ballSpeedY;
 	}
 
 	function drawEverthing(){
@@ -35,10 +46,10 @@
 		colorRect(0,0,canvas.width,canvas.height, 'black');
 		
 		// Left player paddle	
-		colorRect(10,250,10,120, 'white');
+		colorRect(0,250,10,120, 'white');
 		
 		// Draws the ball
-		colorCircle(ballx,150,10, 'red');
+		colorCircle(ballX,ballY,10, 'white');
 			}
 
 	function colorCircle(centerX, centerY, radius, drawColor){
