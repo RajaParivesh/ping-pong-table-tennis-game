@@ -30,20 +30,24 @@
 	}
 
 	function drawEverthing(){
-		console.log(ballx);
 
-		canvasContext.fillStyle = 'black';
-		canvasContext.fillRect(0,0, canvas.width, canvas.height);
-		canvasContext.fillStyle = 'white';
-		canvasContext.fillRect(10,250,10,120);
-		canvasContext.fillStyle = 'red';
-		canvasContext.fillRect(ballx,100,10,10);
+		// Blanks out the screen with black	
+		colorRect(0,0,canvas.width,canvas.height, 'black');
+		// Left player paddle	
+		colorRect(10,250,10,120, 'white');
+		// Draws the ball
+		colorRect(ballx,100,10,10, 'red');
+	}
+
+	function colorRect(leftX,topY,width,height,drawColor){
+		canvasContext.fillStyle = drawColor;
+		canvasContext.fillRect(leftX,topY,width,height);
 	}
 </script>
 
 </head>
 <body>
-	<h3># Tennis Game</h3>
+	<h3># Ping Pong Table Tennis Game</h3>
 <canvas id="gameCanvas" width="800" height="600">
 </canvas>
 </body>
