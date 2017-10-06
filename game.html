@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Tennis Game	</title>
+<script type="text/javascript">
+	
+	var canvas;// information about dimensions
+	var canvasContext;// information about shape
+	var ballx=20;
+	var ballSpeedx=10;
+
+	window.onload = function(){
+		console.log('Every thing is Good!!');
+		canvas = document.getElementById('gameCanvas');
+		canvasContext = canvas.getContext('2d');
+
+		var framePerSecond = 30;
+		setInterval(function(){
+			drawEverthing();
+			moveEverything();
+		}, 1000/framePerSecond);
+	}
+	
+	function moveEverything(){
+			ballx = ballx + ballSpeedx;
+		if(ballx > canvas.width)
+			ballSpeedx = -ballSpeedx;
+		if(ballx < 0)
+			ballSpeedx = -ballSpeedx;
+	}
+
+	function drawEverthing(){
+		console.log(ballx);
+
+		canvasContext.fillStyle = 'black';
+		canvasContext.fillRect(0,0, canvas.width, canvas.height);
+		canvasContext.fillStyle = 'white';
+		canvasContext.fillRect(10,250,10,120);
+		canvasContext.fillStyle = 'red';
+		canvasContext.fillRect(ballx,100,10,10);
+	}
+</script>
+
+</head>
+<body>
+	<h3># Tennis Game</h3>
+<canvas id="gameCanvas" width="800" height="600">
+</canvas>
+</body>
+</html>
