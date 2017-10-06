@@ -33,16 +33,26 @@
 
 		// Blanks out the screen with black	
 		colorRect(0,0,canvas.width,canvas.height, 'black');
+		
 		// Left player paddle	
 		colorRect(10,250,10,120, 'white');
+		
 		// Draws the ball
-		colorRect(ballx,100,10,10, 'red');
-	}
+		colorCircle(ballx,150,10, 'red');
+			}
 
+	function colorCircle(centerX, centerY, radius, drawColor){
+		canvasContext.beginPath();
+		canvasContext.arc(centerX,centerY,radius, 0, Math.PI*2, true);
+		canvasContext.fillStyle = drawColor;
+		canvasContext.fill();
+
+	}
 	function colorRect(leftX,topY,width,height,drawColor){
 		canvasContext.fillStyle = drawColor;
 		canvasContext.fillRect(leftX,topY,width,height);
 	}
+
 </script>
 
 </head>
